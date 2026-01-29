@@ -1,0 +1,14 @@
+[Unit]
+Description=HS RCON Forwarder (192.168.11.16:6430 -> 127.0.0.1:16430)
+After=network.target
+
+[Service]
+Type=simple
+User=ezel
+WorkingDirectory=/home/ezel/Game Server/HS_TestServer
+ExecStart=/bin/bash -lc "cd '/home/ezel/Game Server/HS_TestServer' && /usr/bin/python3 scripts/rcon_forwarder.py 192.168.11.16 6430 127.0.0.1 16430"
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
